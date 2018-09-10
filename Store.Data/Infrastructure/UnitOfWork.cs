@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Store.Data.Infrastructure
+﻿namespace Store.Data.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -20,6 +14,7 @@ namespace Store.Data.Infrastructure
         {
             get { return dbContext ?? (dbContext = new StoreEntities()); }
         }
+
         public void Commit()
         {
             DbContext.Commit();

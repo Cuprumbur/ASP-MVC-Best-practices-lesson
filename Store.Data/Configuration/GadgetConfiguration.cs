@@ -1,5 +1,4 @@
 ﻿using Store.Model.Models;
-using System.Data.Entity.ModelConfiguration;
 
 namespace Store.Data.Configuration
 {
@@ -12,6 +11,5 @@ namespace Store.Data.Configuration
             Property(g => g.Price).IsRequired().HasPrecision(8, 2);
             Property(g => g.CategoryID).IsRequired();
         }
-
     }
 }
