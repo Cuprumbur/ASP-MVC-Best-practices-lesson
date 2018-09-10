@@ -2,6 +2,7 @@
 //using Microsoft.Analytics.Types.Sql;
 using Store.Data.Configuration;
 using Store.Model.Models;
+using System.Data.Entity;
 
 namespace Store.Data
 {

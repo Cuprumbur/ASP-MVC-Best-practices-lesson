@@ -1,4 +1,5 @@
 ﻿using Store.Model.Models;
+using System.Data.Entity.ModelConfiguration;
 
 namespace Store.Data.Configuration
 {
