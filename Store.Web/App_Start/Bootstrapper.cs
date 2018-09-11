@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Integration.Mvc;
 using Store.Data.Infrastructure;
 using Store.Data.Repositories;
 using Store.Service;
@@ -22,8 +23,7 @@ namespace Store.Web.App_Start
         {
             var builder = new ContainerBuilder();
 
-            // replace builder.RegisterControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
