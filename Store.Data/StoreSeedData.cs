@@ -1,16 +1,12 @@
 ﻿//using Microsoft.|Analytics.Interfaces;
 //using Microsoft.Analytics.Types.Sql;
 using Store.Model.Models;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Store.Data
 {
-public    class StoreSeedData:DropCreateDatabaseIfModelChanges<StoreEntities>
+    public class StoreSeedData : DropCreateDatabaseIfModelChanges<StoreEntities>
     {
         protected override void Seed(StoreEntities context)
         {
@@ -84,7 +80,6 @@ public    class StoreSeedData:DropCreateDatabaseIfModelChanges<StoreEntities>
                     Price = 94.99m,
                     Image= "asus-memo.jpg"
                 }
-                
             };
         }
     }

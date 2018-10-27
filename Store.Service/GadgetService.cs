@@ -6,39 +6,43 @@ using System.Linq;
 
 namespace Store.Service
 {
-    interface IGadgetService
+    public interface IGadgetService
     {
         IEnumerable<Gadget> GetGadgets();
-        IEnumerable<Gadget> GetCategoryGadget(string categoryName, string gadgetName = null);
-        Gadget GetGadget(int id);
-        void CreateGadget(Gadget gadget);
-        void SaveGadget();
 
+        IEnumerable<Gadget> GetCategegoryGadgets(string categeoryName, string gadgetName = null);
+
+        Gadget GetGadget(int id);
+
+        void CreateGadget(Gadget gadget);
+
+        void SaveGadget();
     }
+
     public class GadgetService : IGadgetService
     {
-        private IGadgetRepository gadgetRepository;
-        private ICategoryRepository categoryRepository;
-        private IUnitOfWork unitOfWork;
+        private readonly IGadgetRepository gadgetRepository;
+        private readonly ICategoryRepository categoryRepository;
+        private readonly IUnitOfWork unitOfWork;
 
-
-        public GadgetService(IGadgetRepository gadgetRepository, ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
+        public GadgetService(IGadgetRepository gadgetRepository,
+            ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
         {
             this.gadgetRepository = gadgetRepository;
             this.categoryRepository = categoryRepository;
             this.unitOfWork = unitOfWork;
         }
 
+        #region IGadgetService Members
 
-        #region IGadgerService members        
         public void CreateGadget(Gadget gadget)
         {
             gadgetRepository.Add(gadget);
         }
 
-        public IEnumerable<Gadget> GetCategoryGadget(string categoryName, string gadgetName = null)
+        public IEnumerable<Gadget> GetCategegoryGadgets(string categeoryName, string gadgetName = null)
         {
-            var category = categoryRepository.GetCategoryByName(categoryName);
+            var category = categoryRepository.GetCategoryByName(categeoryName);
             return category.Gadgets.Where(g => g.Name.ToLower().Contains(gadgetName.ToLower().Trim()));
         }
 
@@ -57,7 +61,8 @@ namespace Store.Service
         public void SaveGadget()
         {
             unitOfWork.Commit();
-    } 
-        #endregion
+        }
+
+        #endregion IGadgetService Members
     }
 }

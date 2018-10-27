@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store.Data.Infrastructure
 {
     public class Disposable : IDisposable
     {
         private bool isDisposed;
-
 
         ~Disposable()
         {
@@ -20,7 +15,6 @@ namespace Store.Data.Infrastructure
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-
         }
 
         private void Dispose(bool disposing)
@@ -37,5 +31,4 @@ namespace Store.Data.Infrastructure
         {
         }
     }
-
 }

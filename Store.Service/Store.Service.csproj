@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14A66353-8922-46CA-B55D-C7D4AD88CC42}</ProjectGuid>
+    <ProjectGuid>{A85C86EE-EFDC-45C3-852A-895D95F93355}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Store.Service</RootNamespace>
     <AssemblyName>Store.Service</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,13 +47,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Store.Data\Store.Data.csproj">
-      <Project>{2C4604BB-D8BF-4E33-9E8D-D7C834032261}</Project>
+      <Project>{2c4604bb-d8bf-4e33-9e8d-d7c834032261}</Project>
       <Name>Store.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Store.Model\Store.Model.csproj">
-      <Project>{CDAF1914-6282-47CE-8E2F-0205E8F9F8F3}</Project>
+      <Project>{cdaf1914-6282-47ce-8e2f-0205e8f9f8f3}</Project>
       <Name>Store.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

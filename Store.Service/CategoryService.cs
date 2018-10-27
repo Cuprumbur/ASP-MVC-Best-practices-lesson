@@ -1,23 +1,30 @@
 ﻿using Store.Data.Infrastructure;
 using Store.Data.Repositories;
 using Store.Model.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Store.Service
 {
-    interface ICategoryService
+    public interface ICategoryService
     {
         IEnumerable<Category> GetCategories(string name = null);
+
         Category GetCategory(int id);
+
         Category GetCategory(string name);
+
         void CreateCategory(Category category);
+
         void SaveCategory();
     }
+
     public class CategoryService : ICategoryService
     {
-        private ICategoryRepository categoryRepository;
-        private IUnitOfWork unitOfWork;
+        private readonly ICategoryRepository categoryRepository;
+
+        private readonly IUnitOfWork unitOfWork;
 
         public CategoryService(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
         {
@@ -25,7 +32,8 @@ namespace Store.Service
             this.unitOfWork = unitOfWork;
         }
 
-        #region ICategoryService members
+        #region ICategoryService Members
+
         public void CreateCategory(Category category)
         {
             categoryRepository.Add(category);
@@ -34,30 +42,31 @@ namespace Store.Service
         public IEnumerable<Category> GetCategories(string name = null)
         {
             if (string.IsNullOrEmpty(name))
-
             {
                 return categoryRepository.GetAll();
             }
             else
             {
-                return categoryRepository.GetAll().Where(x => x.Name.ToLower().Contains(name.ToLower().Trim()));
+                return categoryRepository.GetAll().Where(c => c.Name == name);
             }
         }
 
         public Category GetCategory(int id)
         {
-            return categoryRepository.GetById(id);
+            var category = categoryRepository.GetById(id);
+            return category;
         }
 
         public Category GetCategory(string name)
         {
-            return categoryRepository.GetCategoryByName(name);
-        } 
+            throw new NotImplementedException();
+        }
 
         public void SaveCategory()
         {
             unitOfWork.Commit();
         }
-        #endregion
+
+        #endregion ICategoryService Members
     }
 }

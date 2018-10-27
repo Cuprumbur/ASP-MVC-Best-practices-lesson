@@ -1,10 +1,7 @@
 ﻿using Store.Data.Infrastructure;
 using Store.Model.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Store.Data.Repositories
 {
@@ -24,11 +21,10 @@ namespace Store.Data.Repositories
             entity.DateUpdated = DateTime.Now;
             base.Update(entity);
         }
-
     }
 
     public interface ICategoryRepository : IRepository<Category>
     {
-        Category GetCategoryByName(string categoryName);
+        Category GetCategoryByName(string categeoryName);
     }
 }

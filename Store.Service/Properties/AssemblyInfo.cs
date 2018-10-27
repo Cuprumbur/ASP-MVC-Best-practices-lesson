@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // Общие сведения об этой сборке предоставляются следующим набором
@@ -20,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("14a66353-8922-46ca-b55d-c7d4ad88cc42")]
+[assembly: Guid("a85c86ee-efdc-45c3-852a-895d95f93355")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
