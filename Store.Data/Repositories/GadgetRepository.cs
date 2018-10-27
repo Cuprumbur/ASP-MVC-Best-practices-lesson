@@ -17,7 +17,7 @@ namespace Store.Data.Repositories
 
     }
 
-    internal interface IGadgetRepository : IRepository<Gadget>
+    public interface IGadgetRepository : IRepository<Gadget>
     {
     }
 }

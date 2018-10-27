@@ -27,7 +27,8 @@ namespace Store.Data.Repositories
 
     }
 
-    internal interface ICategoryRepository : IRepository<Category>
+    public interface ICategoryRepository : IRepository<Category>
     {
+        Category GetCategoryByName(string categoryName);
     }
 }
