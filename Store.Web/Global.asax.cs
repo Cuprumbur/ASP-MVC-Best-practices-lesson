@@ -1,4 +1,5 @@
 ﻿using Store.Data;
+using Store.Web.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,10 @@ namespace Store.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             //    FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            //    BundleConfig.RegisterBundles(BundleTable.Bundles);
+                BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
+            // Autofac and Automapper configurations
+            Bootstrapper.Run();
         }
     }
 }

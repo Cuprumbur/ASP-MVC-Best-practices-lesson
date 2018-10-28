@@ -3,11 +3,8 @@ using Autofac.Integration.Mvc;
 using Store.Data.Infrastructure;
 using Store.Data.Repositories;
 using Store.Service;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Store.Web.App_Start
@@ -27,7 +24,7 @@ namespace Store.Web.App_Start
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
-
+                
             // Repositories
             builder.RegisterAssemblyTypes(typeof(GadgetRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
