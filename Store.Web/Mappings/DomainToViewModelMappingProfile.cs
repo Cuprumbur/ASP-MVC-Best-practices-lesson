@@ -4,7 +4,7 @@ using Store.Web.ViewModels;
 
 namespace Store.Web.Mappings
 {
-    internal class DomainToViewModelMappingProfile:Profile
+    internal class DomainToViewModelMappingProfile : Profile
     {
         public override string ProfileName
         {

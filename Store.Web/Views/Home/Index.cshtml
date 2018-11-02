@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<Store.Web.ViewModels.CategoryViewModel>
 @{
-    ViewBag.Title = "Store";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "Store";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <p>
 </p>
@@ -17,7 +19,6 @@
                     {
                         @Html.TextBox("gadgetName", null, new { @class = "form-control", placeholder = "Search in " + item.Name })
                     }
-
                 </div>
                 @foreach (var gadget in item.Gadgets)
                 {

@@ -1,4 +1,4 @@
-﻿    namespace Store.Web.ViewModels
+﻿namespace Store.Web.ViewModels
 {
     public class GadgetViewModel
     {

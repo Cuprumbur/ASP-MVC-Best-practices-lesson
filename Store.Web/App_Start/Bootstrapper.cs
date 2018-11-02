@@ -28,7 +28,7 @@ namespace Store.Web.App_Start
 
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
             builder.RegisterType<DbFactory>().As<IDbFactory>().InstancePerRequest();
-                
+
             // Repositories
             builder.RegisterAssemblyTypes(typeof(GadgetRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
@@ -40,7 +40,7 @@ namespace Store.Web.App_Start
                 .AsImplementedInterfaces().InstancePerRequest();
 
             IContainer container = builder.Build();
-            // 
+            //
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }

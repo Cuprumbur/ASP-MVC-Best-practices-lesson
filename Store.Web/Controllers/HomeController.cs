@@ -2,10 +2,8 @@
 using Store.Model.Models;
 using Store.Service;
 using Store.Web.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Store.Web.Controllers
@@ -30,7 +28,7 @@ namespace Store.Web.Controllers
             categories = categoryService.GetCategories(category).ToList();
 
             viewModelsGadgets = Mapper.Map<IEnumerable<Category>, IEnumerable<CategoryViewModel>>(categories);
-                 
+
             return View(viewModelsGadgets);
         }
 
@@ -48,7 +46,7 @@ namespace Store.Web.Controllers
             return View();
         }
 
-        public ActionResult  Filter(string category, string gadgetName)
+        public ActionResult Filter(string category, string gadgetName)
         {
             IEnumerable<GadgetViewModel> viewModelsGadgets;
             IEnumerable<Gadget> gadgets;
@@ -76,6 +74,5 @@ namespace Store.Web.Controllers
             var category = categoryService.GetCategory(newGadget.GadgetCategory);
             return RedirectToAction("Index", new { category = category.Name });
         }
-        
     }
 }

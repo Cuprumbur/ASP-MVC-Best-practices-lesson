@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace Store.Web
 {
@@ -12,7 +11,6 @@ namespace Store.Web
             bundles.Add(new StyleBundle("~/bootstrap/css").Include("~/css/bootstrap.css", "~/css/site.css"));
 
             BundleTable.EnableOptimizations = true;
-
         }
     }
 }
