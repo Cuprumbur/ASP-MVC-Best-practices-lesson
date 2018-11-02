@@ -18,10 +18,8 @@ namespace Store.Web
             System.Data.Entity.Database.SetInitializer(new StoreSeedData());
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //    FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-                BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
             // Autofac and Automapper configurations
             Bootstrapper.Run();
         }

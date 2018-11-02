@@ -43,7 +43,7 @@ namespace Store.Data
                     Description ="Android 4.4 KitKat Tablet PC, Cortex A Cortex A8 1.2 GHz Dual Core Processor,512MB / 4GB,Dual Camera,G-Sensor (Black)",
                     CategoryID = 1,
                     Price = 46.99m,
-                    Image ="prontotec.img"
+                    Image ="prontotec.jpg"
                 },
                  new Gadget {
                     Name = "Samsung Galaxy",

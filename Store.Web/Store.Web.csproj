@@ -159,7 +159,6 @@
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -174,40 +173,34 @@
     <Compile Include="ViewModels\GadgetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="CSS\bootstrap-grid.css" />
-    <Content Include="CSS\bootstrap-grid.min.css" />
-    <Content Include="CSS\bootstrap-reboot.css" />
-    <Content Include="CSS\bootstrap-reboot.min.css" />
-    <Content Include="CSS\bootstrap.css" />
-    <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="JS\bootstrap.bundle.js" />
-    <Content Include="JS\bootstrap.bundle.min.js" />
-    <Content Include="JS\bootstrap.js" />
-    <Content Include="JS\bootstrap.min.js" />
+    <Content Include="Images\acer-aspire.jpg" />
+    <Content Include="Images\Alldaymall.jpg" />
+    <Content Include="Images\asus-latest.jpg" />
+    <Content Include="Images\asus-memo.jpg" />
+    <Content Include="Images\Christian-Bale.jpg" />
+    <Content Include="Images\dell-inspiron.jpg" />
+    <Content Include="Images\dragon-touch.jpg" />
+    <Content Include="Images\hp-pavilion.jpg" />
+    <Content Include="Images\hp-stream.jpg" />
+    <Content Include="Images\htc-desire.jpg" />
+    <Content Include="Images\neutab.jpg" />
+    <Content Include="Images\nokia-lumia.jpg" />
+    <Content Include="Images\prontotec.jpg" />
+    <Content Include="Images\samsung-galaxy.jpg" />
+    <Content Include="Images\sanyo-innuendo.jpg" />
+    <Content Include="Images\ulefone.jpg" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\site.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="CSS\.DS_Store" />
-    <Content Include="CSS\bootstrap-grid.css.map" />
-    <Content Include="CSS\bootstrap-grid.min.css.map" />
-    <Content Include="CSS\bootstrap-reboot.css.map" />
-    <Content Include="CSS\bootstrap-reboot.min.css.map" />
-    <Content Include="CSS\bootstrap.css.map" />
-    <Content Include="CSS\bootstrap.min.css.map" />
-    <Content Include="JS\bootstrap.bundle.js.map" />
-    <Content Include="JS\bootstrap.bundle.min.js.map" />
-    <Content Include="JS\bootstrap.js.map" />
-    <Content Include="JS\bootstrap.min.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -219,7 +212,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -228,10 +223,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\Shared\Gadget.cshtml" />
@@ -246,10 +238,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
