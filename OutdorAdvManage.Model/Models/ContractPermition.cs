@@ -7,7 +7,7 @@ namespace OutdorAdvManage.Model.Models
     /// </summary>
     public class ContractPermition
     {
-        public int ContractPermitionsId { get; set; }
+        public int ContractPermitionId { get; set; }
         public int Number { get; set; }
         public DateTime Time { get; set; }
     }

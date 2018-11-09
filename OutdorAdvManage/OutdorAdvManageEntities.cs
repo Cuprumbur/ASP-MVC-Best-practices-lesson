@@ -13,12 +13,14 @@ namespace OutdorAdvManage.Data
         }
 
         public DbSet<AdvertisingConstruction> AdvertisingConstructions { get; set; }
-        public DbSet<Contract> Contracts { get; set; }
+        public DbSet<Contract> Contracts { get; set; }//
         public DbSet<IssuancePermit> IssuancePermits { get; set; }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Resolution> Resolutions { get; set; }
         public DbSet<Counterparty> Counterpartys { get; set; }
+        public DbSet<ContractPermition> ContractPermitions { get; set; }
+        
 
         public virtual void Commit()
         {

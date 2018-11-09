@@ -9,13 +9,16 @@ namespace OutdorAdvManage.Model.Models
     public class AdvertisingConstruction
     {
         public int AdvertisingConstructionId { get; set; }
-        public string Description { get; set; }
+        //public string Description { get; set; }
         public string TypeContsruction { get; set; }
         public Size Size { get; set; }
         public int NumberSides { get; set; }
         // public System.Device.Location.CivicAddressResolver Address { get; set; }
         // public System.Device.Location.GeoCoordinate Coordinate { get; set; }
         public virtual List<Counterparty> Photos { get; set; }
+        /// <summary>
+        /// Номер в 
+        /// </summary>
         public int NumberInSheme { get; set; }
 
         //Дополнительное описание Адреса?

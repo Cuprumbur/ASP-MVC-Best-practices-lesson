@@ -9,6 +9,9 @@ namespace OutdorAdvManage.Model.Models
     {
         public int ResolutionId { get; set; }
         public int Number { get; set; }
+        /// <summary>
+        /// Дата договора
+        /// </summary>
         public DateTime Time { get; set; }
 
         /// <summary>
