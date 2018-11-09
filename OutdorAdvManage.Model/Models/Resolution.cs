@@ -22,7 +22,7 @@ namespace OutdorAdvManage.Model.Models
         ///  Рекламораспостранитель
         /// </summary>
         [ForeignKey(nameof(СounterpartyId))]
-        public Counterparty Сounterparty { get; set; }
+        public virtual Counterparty Сounterparty { get; set; }
 
         public int OwnerId { get; set; }
 
@@ -33,10 +33,10 @@ namespace OutdorAdvManage.Model.Models
         [ForeignKey(nameof(OwnerId))]
         public Owner Owner { get; set; }
 
-        public int ConstructionId { get; set; }
+        public int AdvertisingConstructionId { get; set; }
 
-        [ForeignKey(nameof(ConstructionId))]
-        public AdvertisingConstruction Construction { get; set; }
+        [ForeignKey(nameof(AdvertisingConstructionId))]
+        public virtual AdvertisingConstruction AdvertisingConstruction { get; set; }
 
         /// <summary>
         /// Содержание рекламы
@@ -48,12 +48,12 @@ namespace OutdorAdvManage.Model.Models
 
         public DateTime Finish { get; set; }
 
-        public int ContractPermitionsId { get; set; }
+        public int ContractPermitionId { get; set; }
 
         /// <summary>
         /// Основание выдачи
         /// </summary>
-        [ForeignKey(nameof(ContractPermitionsId))]
-        public ContractPermition ContractPermitions { get; set; }
+        [ForeignKey(nameof(ContractPermitionId))]
+        public virtual ContractPermition ContractPermition { get; set; }
     }
 }

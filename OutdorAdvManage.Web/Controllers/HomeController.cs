@@ -3,7 +3,6 @@ using OutdorAdvManage.Model.Models;
 using OutdorAdvManage.Web.ViewModels;
 using Store.Service;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace OutdorAdvManage.Web.Controllers
@@ -12,28 +11,37 @@ namespace OutdorAdvManage.Web.Controllers
 
     {
         private readonly IСounterpartyService сounterpartyService;
+        private readonly IResolutionService resolutionService;
 
-        public HomeController(IСounterpartyService сounterpartyService)
+        public HomeController(IСounterpartyService сounterpartyService, IResolutionService resolutionService)
         {
             this.сounterpartyService = сounterpartyService;
+            this.resolutionService = resolutionService;
         }
 
         public ActionResult Index()
         {
-            CounterpartyViewModel counterpartyViewModel;
-            IEnumerable<Counterparty> counterparties;
+            MainViewModel mainViewModel;
+            IEnumerable<Resolution> resolutions;
 
-            counterparties = сounterpartyService.GetAll();
+            resolutions = resolutionService.GetAll();
 
+            mainViewModel = new MainViewModel();
+            mainViewModel.Datas = new List<ViewModels.Data>();
 
-            counterpartyViewModel = new CounterpartyViewModel
+            foreach (var item in resolutions)
             {
-                NameCompany = counterparties.Last().NameCompany
-            };
-            
-//            counterpartyViewModels = Mapper.Map<IEnumerable<Counterparty>, IEnumerable<CounterpartyViewModel>>(counterparties);
+                mainViewModel.Datas.Add(new ViewModels.Data()
+                {
+                    Company = item.Сounterparty?.NameCompany ?? "NULL!!!",
+                    Id = item.Number,
+                    Description = item.AdvertisingConstruction?.TypeContsruction ?? "NULL!!!",
+                    Start = item.Start,
+                    Finish = item.Finish
+                });
+            }
 
-            return View(counterpartyViewModel);
+            return View(mainViewModel);
         }
 
         public ActionResult About()
@@ -50,16 +58,13 @@ namespace OutdorAdvManage.Web.Controllers
             return View();
         }
 
-        
-
         public ActionResult Create(CounterpartyViewModel CounterpartyViewModel)
         {
-                var counterparty= Mapper.Map<CounterpartyViewModel, Counterparty>(CounterpartyViewModel);
-                сounterpartyService.CreateCounterparty(counterparty);
-
+            var counterparty = Mapper.Map<CounterpartyViewModel, Counterparty>(CounterpartyViewModel);
+            сounterpartyService.CreateCounterparty(counterparty);
 
             сounterpartyService.SaveCounterparty();
-            
+
             return RedirectToAction("Index");
         }
     }

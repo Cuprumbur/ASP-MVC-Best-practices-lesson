@@ -2,84 +2,80 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace OutdorAdvManage.Data
 {
-    enum ConstuctuionTypes
+    internal enum ConstuctuionTypes
     {
         Пано,
         Наружняя
     }
 
-    enum ContentTypes
+    internal enum ContentTypes
     {
         Реклама
     }
+
     public class OutdorAdvManageData : DropCreateDatabaseAlways<OutdorAdvManageEntities>
     {
-        List<Contract> Contracts;
-        List<Resolution> Resolutions;
-        List<AdvertisingConstruction> Constructions;
-        List<Counterparty> Counterpartys;
-        List<ContractPermition> ContractPermitions;
-        Owner city;
-
-
+        private Owner city;
+        private DbSet<Contract> Contracts;
+        private DbSet<Resolution> Resolutions;
+        private DbSet<AdvertisingConstruction> Constructions;
+        private DbSet<Counterparty> Counterpartys;
+        private DbSet<ContractPermition> ContractPermitions;
 
         protected override void Seed(OutdorAdvManageEntities context)
         {
-
-
             //Counterparty
-            Counterpartys = GetCounterparty();
-         
+            GetCounterparty().ForEach(x => context.Counterpartys.Add(x));
+            context.Commit();
+            Counterpartys = context.Counterpartys;
 
-            //Owner
-            city = new Owner
+            context.Owners.Add(new Owner
             {
-                Сounterparty = Counterpartys[0],
-                Start = new DateTime(2000,1,1),
+                Сounterparty = Counterpartys.Where(x => x.CounterpartyId == 0).FirstOrDefault(),
+                Start = new DateTime(2000, 1, 1),
                 Finish = new DateTime(2100, 1, 1),
                 Construction = null
-            };
+            });
+            //Owner
+            context.Commit();
+            city = context.Owners.FirstOrDefault();
 
             //Contract
-            Contracts = GetContracts();
-          
+            GetContracts().ForEach(x => context.Contracts.Add(x));
+            context.Commit();
+            Contracts = context.Contracts;
+
             //AdvertisingConstruction
-            Constructions = GetAdvertisingConstructions();
+            GetAdvertisingConstructions().ForEach(x => context.AdvertisingConstructions.Add(x));
+            context.Commit();
+            Constructions = context.AdvertisingConstructions;
 
-
-            ContractPermitions = GetContractPermitions();
+            GetContractPermitions().ForEach(x => context.ContractPermitions.Add(x));
+            context.Commit();
+            ContractPermitions = context.ContractPermitions;
 
             //Resolution
-            Resolutions = GetResolutions();
-       
+            GetResolutions().ForEach(x => context.Resolutions.Add(x));
+            context.Commit();
+            Resolutions = context.Resolutions;
 
             //IssuancePermit
-
-            context.Owners.Add(city);
-            Counterpartys.ForEach(x => context.Counterpartys.Add(x));
-            Contracts.ForEach(x => context.Contracts.Add(x));
-            Constructions.ForEach(x => context.AdvertisingConstructions.Add(x));
-            Resolutions.ForEach(x => context.Resolutions.Add(x));
             GetIssuancePermits().ForEach(x => context.IssuancePermits.Add(x));
-           ContractPermitions.ForEach(x => context.ContractPermitions.Add(x));
-
+            context.Commit();
 
             //Photo
-
-            context.Commit();
-         
         }
 
         private List<ContractPermition> GetContractPermitions()
         {
-            var list = new List<ContractPermition>
-            ();
+            var list = new List<ContractPermition>();
             for (int i = 0; i < 6; i++)
             {
-                list.Add(new ContractPermition() { Number =i,Time= new DateTime(2018,i+1,i+1)});
+                list.Add(new ContractPermition() { Number = i, Time = new DateTime(2018, i + 1, i + 1) });
             }
             return list;
         }
@@ -87,23 +83,23 @@ namespace OutdorAdvManage.Data
         private List<Resolution> GetResolutions()
         {
             var list = new List<Resolution>();
-            for (int i = 0; i < 6; i++)
+
+            for (int i = 1; i <= 6; i++)
             {
                 list.Add(new Resolution
-             {
-                 Construction = Constructions[i],
-                 AdvertisingContent = ContentTypes.Реклама.ToString(),
-                 ContractPermitions = ContractPermitions[i],
-                 Owner = city,
-                 Сounterparty = Counterpartys[i],
-                 Start = new DateTime(2018, 1, i+1),
-                 Finish = new DateTime(2018, 10, i+1),
-                 Number = i,
-                 Time = new DateTime(2018,i+1,i+1),
+                {
+                    AdvertisingConstruction= Constructions.Where(x => x.AdvertisingConstructionId == i).FirstOrDefault(),
+                    AdvertisingContent = ContentTypes.Реклама.ToString(),
+                    ContractPermition = ContractPermitions.Where(x => x.ContractPermitionId == i).FirstOrDefault(),
+                    Owner = city,
+                    Сounterparty = Counterpartys.Where(x => x.CounterpartyId == i).FirstOrDefault(),
+                    Start = new DateTime(2018, 1, i + 1),
+                    Finish = new DateTime(2018, 10, i + 1).AddMonths(i),
+                    Number = i,
+                    Time = new DateTime(2018, i + 1, i + 1),
                 });
             }
             return list;
-
         }
 
         private List<IssuancePermit> GetIssuancePermits()
@@ -112,52 +108,51 @@ namespace OutdorAdvManage.Data
             {
                 new IssuancePermit
                 {
-                    Contract = Contracts[0],
                     IsStateDutyPaid = false,
                     IssueDate = new DateTime(2017,1,1),
                     Received = false,
-                    Resolution = Resolutions[0],
+                    Resolution = Resolutions.Where(x=>x.AdvertisingConstructionId == 6).FirstOrDefault(),
+                    Contract = Contracts.Where(x=>x.ContractId== 6).FirstOrDefault(),
                 },
                 new IssuancePermit
                 {
-                    Contract = Contracts[1],
                     IsStateDutyPaid = true,
                     IssueDate = new DateTime(2017,3,1),
                     Received = true,
-                    Resolution = Resolutions[1],
-
+                    Resolution = Resolutions.Where(x=>x.AdvertisingConstructionId == 1).FirstOrDefault(),
+                    Contract = Contracts.Where(x=>x.ContractId== 1).FirstOrDefault(),
                 },
                 new IssuancePermit
                 {
-                    Contract = Contracts[2],
                     IsStateDutyPaid = true,
                     IssueDate = new DateTime(2018,4,1),
                     Received = false,
-                    Resolution = Resolutions[2],
+                    Resolution = Resolutions.Where(x=>x.AdvertisingConstructionId == 2).FirstOrDefault(),
+                    Contract = Contracts.Where(x=>x.ContractId== 2).FirstOrDefault(),
                 },
                 new IssuancePermit
                 {
-                    Contract = Contracts[3],
                     IsStateDutyPaid = true,
                     IssueDate = new DateTime(2018,9,1),
                     Received = false,
-                    Resolution = Resolutions[3],
+                    Resolution = Resolutions.Where(x=>x.AdvertisingConstructionId == 3).FirstOrDefault(),
+                    Contract = Contracts.Where(x=>x.ContractId== 3).FirstOrDefault(),
                 },
                 new IssuancePermit
                 {
-                    Contract = Contracts[4],
                     IsStateDutyPaid = false,
                     IssueDate = new DateTime(2018,10,1),
                     Received = false,
-                    Resolution = Resolutions[4],
+                    Resolution = Resolutions.Where(x=>x.AdvertisingConstructionId == 4).FirstOrDefault(),
+                    Contract = Contracts.Where(x=>x.ContractId== 4).FirstOrDefault(),
                 },
                 new IssuancePermit
                 {
-                    Contract = Contracts[5],
                     IsStateDutyPaid = true,
                     IssueDate = new DateTime(2018,11,1),
                     Received = false,
-                    Resolution = Resolutions[5],
+                    Resolution = Resolutions.Where(x=>x.AdvertisingConstructionId ==4).FirstOrDefault(),
+                    Contract = Contracts.Where(x=>x.ContractId== 4).FirstOrDefault(),
                 },
             };
         }
@@ -168,41 +163,42 @@ namespace OutdorAdvManage.Data
             {
                 new AdvertisingConstruction
                 {
+                    
                    NumberInSheme = 10,
                    NumberSides = 1,
-                   Size = new System.Drawing.Size(50,30),
+                   //Size = new System.Drawing.Size(50,30),
                    TypeContsruction = ConstuctuionTypes.Наружняя.ToString()
                 },
                  new AdvertisingConstruction
                 {
                    NumberInSheme = 11,
                    NumberSides = 2,
-                   Size = new System.Drawing.Size(30,50),
+                   //Size = new System.Drawing.Size(30,50),
                    TypeContsruction = ConstuctuionTypes.Наружняя.ToString()
                 },
                   new AdvertisingConstruction
                 {
                    NumberInSheme = 12,
                    NumberSides = 1,
-                   Size = new System.Drawing.Size(10,60),
+                   //Size = new System.Drawing.Size(10,60),
                    TypeContsruction = ConstuctuionTypes.Наружняя.ToString()
                 }, new AdvertisingConstruction
                 {
                    NumberInSheme = 13,
                    NumberSides = 1,
-                   Size = new System.Drawing.Size(10,60),
+                   //Size = new System.Drawing.Size(10,60),
                    TypeContsruction = ConstuctuionTypes.Пано.ToString()
                 }, new AdvertisingConstruction
                 {
                    NumberInSheme = 14,
                    NumberSides = 1,
-                   Size = new System.Drawing.Size(10,60),
+                   //Size = new System.Drawing.Size(10,60),
                    TypeContsruction = ConstuctuionTypes.Пано.ToString()
                 }, new AdvertisingConstruction
                 {
                    NumberInSheme = 15,
                    NumberSides = 1,
-                   Size = new System.Drawing.Size(10,60),
+                   //Size = new System.Drawing.Size(10,60),
                    TypeContsruction = ConstuctuionTypes.Пано.ToString()
                 },
             };
@@ -247,7 +243,6 @@ namespace OutdorAdvManage.Data
                     Start = new DateTime(2017,1,6),
                     Finish = new DateTime(2019,5,10),
                 },
-
             };
         }
 

@@ -1,16 +1,34 @@
-﻿@model  OutdorAdvManage.Web.ViewModels.CounterpartyViewModel
-
+﻿@model OutdorAdvManage.Web.ViewModels.MainViewModel
 @{
     ViewBag.Title = "Index";
 }
 
-<div class="panel-body">
-    <div class="media">
-        
-        <div class="media-body">
-            <h3 class="media-heading">
-                @Model.NameCompany
-            </h3>
-        </div>
-    </div>
-</div>
+<h1>Оперативная сводка</h1>
+
+<h2>Истекли</h2>
+
+@foreach (OutdorAdvManage.Web.ViewModels.Data item in Model.Datas.Where(x => x.Finish <= DateTime.Now))
+{
+    <h4> @item.Id  @item.Start.ToShortDateString()  @item.Finish.ToShortDateString() @item.Company @item.Description</h4>
+}
+
+<h2>В течении недели</h2>
+
+@foreach (OutdorAdvManage.Web.ViewModels.Data item in Model.Datas.Where(x => x.Finish > DateTime.Now && x.Finish <= DateTime.Now.AddDays(7)))
+{
+    <h4> @item.Id  @item.Start.ToShortDateString()  @item.Finish.ToShortDateString() @item.Company @item.Description</h4>
+}
+
+<h2>В течении месяца</h2>
+
+@foreach (OutdorAdvManage.Web.ViewModels.Data item in Model.Datas.Where(x => x.Finish > DateTime.Now.AddDays(7) && x.Finish < DateTime.Now.AddMonths(1)))
+{
+    <h4> @item.Id  @item.Start.ToShortDateString()  @item.Finish.ToShortDateString() @item.Company @item.Description</h4>
+}
+
+<h2>Позже</h2>
+
+@foreach (OutdorAdvManage.Web.ViewModels.Data item in Model.Datas.Where(x => x.Finish > DateTime.Now.AddMonths(1)))
+{
+    <h4> @item.Id  @item.Start.ToShortDateString()  @item.Finish.ToShortDateString() @item.Company @item.Description</h4>
+}
