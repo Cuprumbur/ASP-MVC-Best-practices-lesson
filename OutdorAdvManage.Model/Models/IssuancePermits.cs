@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OutdorAdvManage.Model.Models
 {
@@ -10,7 +11,10 @@ namespace OutdorAdvManage.Model.Models
     {
         public int IssuancePermitId { get; set; }
 
-        public virtual Resolution Resolution { get; set; }
+        [ForeignKey(nameof(ResolutionId))]
+        public  Resolution Resolution { get; set; }
+
+        public int ResolutionId { get; set; }
 
         /// <summary>
         /// Госпошлина оплачена
@@ -27,6 +31,9 @@ namespace OutdorAdvManage.Model.Models
         /// </summary>
         public DateTime IssueDate { get; set; }
 
-        public virtual Contract Contract { get; set; }
+        public  int ContractId { get; set; }
+
+        [ForeignKey(nameof(ContractId))]
+        public Contract Contract { get; set; }
     }
 }

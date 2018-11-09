@@ -38,8 +38,8 @@ namespace OutdorAdvManage.Data
             city = new Owner
             {
                 Сounterparty = Counterpartys[0],
-                Start = DateTime.MinValue,
-                Finish = DateTime.MaxValue,
+                Start = new DateTime(2000,1,1),
+                Finish = new DateTime(2100, 1, 1),
                 Construction = null
             };
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OutdorAdvManage.Model.Models
 {
@@ -9,23 +10,33 @@ namespace OutdorAdvManage.Model.Models
     {
         public int ResolutionId { get; set; }
         public int Number { get; set; }
+
         /// <summary>
         /// Дата договора
         /// </summary>
         public DateTime Time { get; set; }
 
-        /// <summary>
+        public int СounterpartyId { get; set; }
+
+        /// <sumary>
         ///  Рекламораспостранитель
         /// </summary>
-        public virtual Counterparty Сounterparty { get; set; }
+        [ForeignKey(nameof(СounterpartyId))]
+        public Counterparty Сounterparty { get; set; }
+
+        public int OwnerId { get; set; }
 
         /// <summary>
         // Собственник земельного участка.Здания или иного недвижимого имущества,
         // к которому присоединена рекламная конструкция
         /// </summary>
-        public virtual Owner Owner { get; set; }
+        [ForeignKey(nameof(OwnerId))]
+        public Owner Owner { get; set; }
 
-        public virtual AdvertisingConstruction Construction { get; set; }
+        public int ConstructionId { get; set; }
+
+        [ForeignKey(nameof(ConstructionId))]
+        public AdvertisingConstruction Construction { get; set; }
 
         /// <summary>
         /// Содержание рекламы
@@ -37,9 +48,12 @@ namespace OutdorAdvManage.Model.Models
 
         public DateTime Finish { get; set; }
 
+        public int ContractPermitionsId { get; set; }
+
         /// <summary>
         /// Основание выдачи
         /// </summary>
-        public virtual ContractPermition ContractPermitions { get; set; }
+        [ForeignKey(nameof(ContractPermitionsId))]
+        public ContractPermition ContractPermitions { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OutdorAdvManage.Model.Models
 {
@@ -9,12 +10,18 @@ namespace OutdorAdvManage.Model.Models
     {
         public int OwnerId { get; set; }
 
+        public int? CounterpartyId { get; set; }
+
         /// <summary>
         /// Собственик
         /// </summary>
-        public virtual Counterparty Сounterparty { get; set; }
+        [ForeignKey(nameof(CounterpartyId))]
+        public Counterparty Сounterparty { get; set; }
 
-        public virtual AdvertisingConstruction Construction { get; set; }
+        public int? ConstructionId { get; set; }
+
+        [ForeignKey(nameof(ConstructionId))]
+        public AdvertisingConstruction Construction { get; set; }
 
         public DateTime Start { get; set; }
         public DateTime Finish { get; set; }
