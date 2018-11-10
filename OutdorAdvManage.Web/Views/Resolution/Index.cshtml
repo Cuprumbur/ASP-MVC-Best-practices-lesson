@@ -1,0 +1,81 @@
+﻿@model IEnumerable<OutdorAdvManage.Model.Models.Resolution>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.СounterpartyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwnerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdvertisingConstructionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdvertisingContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Start)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Finish)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractPermitionId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.СounterpartyId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OwnerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdvertisingConstructionId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdvertisingContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Finish)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContractPermitionId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ResolutionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ResolutionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ResolutionId })
+        </td>
+    </tr>
+}
+
+</table>

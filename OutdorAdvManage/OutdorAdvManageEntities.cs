@@ -8,7 +8,7 @@ namespace OutdorAdvManage.Data
 {
     public class OutdorAdvManageEntities : DbContext
     {
-        public OutdorAdvManageEntities() : base("ManageEntities")
+        public OutdorAdvManageEntities() : base("OutdorAdv")
         {
         }
 

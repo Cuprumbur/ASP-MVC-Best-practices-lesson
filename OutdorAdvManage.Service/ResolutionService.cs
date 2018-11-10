@@ -10,7 +10,11 @@ namespace Store.Service
     {
         IEnumerable<Resolution> GetAll();
 
-        void SaveCounterparty();
+        void SaveResolution();
+        void Create(Resolution resolution);
+        Resolution GetById(int id);
+        void Update(Resolution resolution);
+        void Delete(Resolution resolution);
     }
 
     public class ResolutionService : IResolutionService
@@ -25,6 +29,16 @@ namespace Store.Service
             this.unitOfWork = unitOfWork;
         }
 
+        public void Create(Resolution resolution)
+        {
+            resolutionRepository.Add(resolution);
+        }
+
+        public void Delete(Resolution resolution)
+        {
+            resolutionRepository.Delete(resolution);
+        }
+
         #region ICategoryService Members
 
         public IEnumerable<Resolution> GetAll()
@@ -32,11 +46,21 @@ namespace Store.Service
             return resolutionRepository.GetAll();
         }
 
-        public void SaveCounterparty()
+        public Resolution GetById(int id)
+        {
+            return resolutionRepository.GetById(id);
+        }
+
+        public void SaveResolution()
         {
             unitOfWork.Commit(); 
         }
-        
+
+        public void Update(Resolution resolution)
+        {
+            resolutionRepository.Update(resolution);
+        }
+
         #endregion ICategoryService Members
     }
 }

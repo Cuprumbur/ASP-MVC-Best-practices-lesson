@@ -39,6 +39,16 @@ namespace OutdorAdvManage.Web.App_Start
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
 
+            // Repositories
+            builder.RegisterAssemblyTypes(typeof(ResolutionRepository).Assembly)
+                .Where(t => t.Name.EndsWith("Repository"))
+                .AsImplementedInterfaces().InstancePerRequest();
+
+            //// Services
+            builder.RegisterAssemblyTypes(typeof(ResolutionService).Assembly)
+                .Where(t => t.Name.EndsWith("Service"))
+                .AsImplementedInterfaces().InstancePerRequest();
+
             IContainer container = builder.Build();
             //
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

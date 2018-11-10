@@ -1,0 +1,90 @@
+﻿@model OutdorAdvManage.Model.Models.Resolution
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Resolution</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.СounterpartyId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.СounterpartyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OwnerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvertisingConstructionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdvertisingConstructionId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvertisingContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdvertisingContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Finish)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Finish)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractPermitionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractPermitionId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ResolutionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
