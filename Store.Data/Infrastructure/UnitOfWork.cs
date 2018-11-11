@@ -12,7 +12,7 @@
 
         public StoreEntities DbContext
         {
-            get { return dbContext ?? (dbContext = new StoreEntities()); }
+            get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }
 
         public void Commit()

@@ -12,7 +12,7 @@
 
         public OutdorAdvManageEntities DbContext
         {
-            get { return dbContext ?? (dbContext = new OutdorAdvManageEntities()); }
+            get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }
 
         public void Commit()
