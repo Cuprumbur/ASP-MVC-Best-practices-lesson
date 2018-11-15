@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ResolutionService.cs" />
+    <Compile Include="AdvConstructionService.cs" />
     <Compile Include="СounterpartyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

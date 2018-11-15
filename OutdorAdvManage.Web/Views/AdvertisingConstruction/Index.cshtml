@@ -1,0 +1,57 @@
+﻿@model IEnumerable<OutdorAdvManage.Model.Models.AdvertisingConstruction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeContsruction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberSides)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberInSheme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Geography.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Geography.Longitude)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeContsruction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberSides)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberInSheme)
+        </td>
+        <th>
+            @Html.DisplayFor(model => item.Geography.Latitude)
+        </th>
+        <th>
+            @Html.DisplayFor(model => item.Geography.Longitude)
+        </th>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.AdvertisingConstructionId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AdvertisingConstructionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AdvertisingConstructionId })
+        </td>
+    </tr>
+}
+
+</table>

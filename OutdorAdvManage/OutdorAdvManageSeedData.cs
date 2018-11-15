@@ -88,7 +88,7 @@ namespace OutdorAdvManage.Data
             {
                 list.Add(new Resolution
                 {
-                    AdvertisingConstruction= Constructions.Where(x => x.AdvertisingConstructionId == i).FirstOrDefault(),
+                    AdvertisingConstruction = Constructions.Where(x => x.AdvertisingConstructionId == i).FirstOrDefault(),
                     AdvertisingContent = ContentTypes.Реклама.ToString(),
                     ContractPermition = ContractPermitions.Where(x => x.ContractPermitionId == i).FirstOrDefault(),
                     Owner = city,
@@ -163,43 +163,55 @@ namespace OutdorAdvManage.Data
             {
                 new AdvertisingConstruction
                 {
-                    
                    NumberInSheme = 10,
                    NumberSides = 1,
                    //Size = new System.Drawing.Size(50,30),
-                   TypeContsruction = ConstuctuionTypes.Наружняя.ToString()
+                   TypeContsruction = ConstuctuionTypes.Наружняя.ToString(),
+                   Description = "п. Орешково",
+                   Geography = AdvertisingConstruction.CreatePoint(51.845854, 107.614861)
                 },
                  new AdvertisingConstruction
                 {
                    NumberInSheme = 11,
                    NumberSides = 2,
                    //Size = new System.Drawing.Size(30,50),
-                   TypeContsruction = ConstuctuionTypes.Наружняя.ToString()
+                   TypeContsruction = ConstuctuionTypes.Наружняя.ToString(),
+                   Description = "ДНТ Лесное",
+                   Geography = AdvertisingConstruction.CreatePoint(51.871828, 107.649022)
                 },
                   new AdvertisingConstruction
                 {
                    NumberInSheme = 12,
                    NumberSides = 1,
                    //Size = new System.Drawing.Size(10,60),
-                   TypeContsruction = ConstuctuionTypes.Наружняя.ToString()
+                   TypeContsruction = ConstuctuionTypes.Наружняя.ToString(),
+                   Description = "Поворот на Восточном",
+
+                   Geography = AdvertisingConstruction.CreatePoint(51.847232, 107.679577)
                 }, new AdvertisingConstruction
                 {
                    NumberInSheme = 13,
                    NumberSides = 1,
                    //Size = new System.Drawing.Size(10,60),
-                   TypeContsruction = ConstuctuionTypes.Пано.ToString()
+                   TypeContsruction = ConstuctuionTypes.Пано.ToString(),
+                   Description = "Бизнес инкубатор",
+                   Geography = AdvertisingConstruction.CreatePoint(51.814452, 107.594605)
                 }, new AdvertisingConstruction
                 {
                    NumberInSheme = 14,
                    NumberSides = 1,
                    //Size = new System.Drawing.Size(10,60),
-                   TypeContsruction = ConstuctuionTypes.Пано.ToString()
+                   TypeContsruction = ConstuctuionTypes.Пано.ToString(),
+                   Description = "Авторынок",
+                   Geography = AdvertisingConstruction.CreatePoint(51.818909, 107.621727)
                 }, new AdvertisingConstruction
                 {
                    NumberInSheme = 15,
                    NumberSides = 1,
                    //Size = new System.Drawing.Size(10,60),
-                   TypeContsruction = ConstuctuionTypes.Пано.ToString()
+                   TypeContsruction = ConstuctuionTypes.Пано.ToString(),
+                   Description = "20 а Орел",
+                   Geography = AdvertisingConstruction.CreatePoint(51.821138, 107.657776)
                 },
             };
         }

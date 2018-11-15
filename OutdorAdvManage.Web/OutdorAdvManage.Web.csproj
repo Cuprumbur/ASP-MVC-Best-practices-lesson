@@ -166,6 +166,7 @@
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdvertisingConstructionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResolutionController.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,6 +223,7 @@
     <Content Include="Views\Resolution\Details.cshtml" />
     <Content Include="Views\Resolution\Edit.cshtml" />
     <Content Include="Views\Resolution\Delete.cshtml" />
+    <Content Include="Views\AdvertisingConstruction\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
