@@ -4,7 +4,7 @@
     ViewBag.Title = "Управление наражной рекламой (Альфа)";
 }
 
-<h2>Оперативная сводка</h2>
+<h2>Оперативная сводка. Разрешения</h2>
 
 <table class="table">
     @*<tr>
@@ -47,7 +47,7 @@
 
     <tr>
         <th colspan="4">
-            В течении недели
+            В течение недели
         </th>
     </tr>
     @foreach (var item in Model.Where(x => x.Finish > DateTime.Now && x.Finish <= DateTime.Now.AddDays(7)))
@@ -71,7 +71,7 @@
 
     <tr>
         <th colspan="4">
-            В течении месяца
+            В течение месяца
         </th>
     </tr>
     @foreach (var item in Model.Where(x => x.Finish > DateTime.Now.AddDays(7) && x.Finish < DateTime.Now.AddMonths(1)))
