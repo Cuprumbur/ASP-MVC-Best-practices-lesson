@@ -1,34 +1,117 @@
-﻿@model OutdorAdvManage.Web.ViewModels.MainViewModel
+﻿@model IEnumerable<OutdorAdvManage.Model.Models.Resolution>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Управление наражной рекламой (Альфа)";
 }
 
-<h1>Оперативная сводка</h1>
+<h2>Оперативная сводка</h2>
 
-<h2>Истекли</h2>
+<table class="table">
+    @*<tr>
+        <th>
+            Окончание
+        </th>
+        <th>
+            Начало
+        </th>
+        <th>
+            Компания
+        </th>
+        <th>
+            Конструкция
+        </th>
 
-@foreach (OutdorAdvManage.Web.ViewModels.Data item in Model.Datas.Where(x => x.Finish <= DateTime.Now))
-{
-    <h4> @item.Id  @item.Start.ToShortDateString()  @item.Finish.ToShortDateString() @item.Company @item.Description</h4>
-}
+    </tr>*@
+    <tr>
+        <th colspan="4">
+            Истекли @Html.ActionLink("Распечатать предупреждения для истекших","") (заглушка)
+        </th>
+    </tr>
+    @foreach (var item in Model.Where(x => x.Finish <= DateTime.Now))
+    {
+        <tr>
+            <td>
+                @item.Finish.ToShortDateString()
+            </td>
+            <td>
+                @item.Start.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Сounterparty.NameCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdvertisingConstruction.Description)
+            </td>
+        </tr>
+    }
 
-<h2>В течении недели</h2>
+    <tr>
+        <th colspan="4">
+            В течении недели
+        </th>
+    </tr>
+    @foreach (var item in Model.Where(x => x.Finish > DateTime.Now && x.Finish <= DateTime.Now.AddDays(7)))
+    {
+        <tr>
+            <td>
+                @item.Finish.ToShortDateString()
+            </td>
+            <td>
+                @item.Start.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Сounterparty.NameCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdvertisingConstruction.Description)
+            </td>
+        </tr>
+    }
 
-@foreach (OutdorAdvManage.Web.ViewModels.Data item in Model.Datas.Where(x => x.Finish > DateTime.Now && x.Finish <= DateTime.Now.AddDays(7)))
-{
-    <h4> @item.Id  @item.Start.ToShortDateString()  @item.Finish.ToShortDateString() @item.Company @item.Description</h4>
-}
 
-<h2>В течении месяца</h2>
+    <tr>
+        <th colspan="4">
+            В течении месяца
+        </th>
+    </tr>
+    @foreach (var item in Model.Where(x => x.Finish > DateTime.Now.AddDays(7) && x.Finish < DateTime.Now.AddMonths(1)))
+    {
+        <tr>
+            <td>
+                @item.Finish.ToShortDateString()
+            </td>
+            <td>
+                @item.Start.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Сounterparty.NameCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdvertisingConstruction.Description)
+            </td>
+        </tr>
+    }
 
-@foreach (OutdorAdvManage.Web.ViewModels.Data item in Model.Datas.Where(x => x.Finish > DateTime.Now.AddDays(7) && x.Finish < DateTime.Now.AddMonths(1)))
-{
-    <h4> @item.Id  @item.Start.ToShortDateString()  @item.Finish.ToShortDateString() @item.Company @item.Description</h4>
-}
-
-<h2>Позже</h2>
-
-@foreach (OutdorAdvManage.Web.ViewModels.Data item in Model.Datas.Where(x => x.Finish > DateTime.Now.AddMonths(1)))
-{
-    <h4> @item.Id  @item.Start.ToShortDateString()  @item.Finish.ToShortDateString() @item.Company @item.Description</h4>
-}
+    <tr>
+        <th colspan="4">
+            Позже
+        </th>
+    </tr>
+    @foreach (var item in Model.Where(x => x.Finish > DateTime.Now.AddMonths(1)))
+    {
+        <tr>
+            <td>
+                @item.Finish.ToShortDateString()
+            </td>
+            <td>
+                @item.Start.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Сounterparty.NameCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdvertisingConstruction.Description)
+            </td>
+        </tr>
+    }
+</table>

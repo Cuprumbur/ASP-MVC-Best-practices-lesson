@@ -21,27 +21,11 @@ namespace OutdorAdvManage.Web.Controllers
 
         public ActionResult Index()
         {
-            MainViewModel mainViewModel;
             IEnumerable<Resolution> resolutions;
-
             resolutions = resolutionService.GetAll();
 
-            mainViewModel = new MainViewModel();
-            mainViewModel.Datas = new List<ViewModels.Data>();
 
-            foreach (var item in resolutions)
-            {
-                mainViewModel.Datas.Add(new ViewModels.Data()
-                {
-                    Company = item.Сounterparty?.NameCompany ?? "NULL!!!",
-                    Id = item.Number,
-                    Description = item.AdvertisingConstruction?.TypeContsruction ?? "NULL!!!",
-                    Start = item.Start,
-                    Finish = item.Finish
-                });
-            }
-
-            return View(mainViewModel);
+            return View(resolutions);
         }
 
         public ActionResult About()

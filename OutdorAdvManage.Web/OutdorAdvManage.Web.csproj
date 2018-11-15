@@ -224,6 +224,11 @@
     <Content Include="Views\Resolution\Edit.cshtml" />
     <Content Include="Views\Resolution\Delete.cshtml" />
     <Content Include="Views\AdvertisingConstruction\Index.cshtml" />
+    <Content Include="Views\AdvertisingConstruction\Sheme.cshtml" />
+    <Content Include="Views\AdvertisingConstruction\Create.cshtml" />
+    <Content Include="Views\AdvertisingConstruction\Edit.cshtml" />
+    <Content Include="Views\AdvertisingConstruction\Delete.cshtml" />
+    <Content Include="Views\AdvertisingConstruction\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

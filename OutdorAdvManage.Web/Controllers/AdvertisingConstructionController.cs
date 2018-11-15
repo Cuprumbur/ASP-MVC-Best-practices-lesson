@@ -1,19 +1,16 @@
 ﻿using OutdorAdvManage.Data.Infrastructure;
+using OutdorAdvManage.Model.Models;
 using Store.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace OutdorAdvManage.Web.Controllers
 {
     public class AdvertisingConstructionController : Controller
 
-
     {
         private IAdvConstructionService advertisingConstructionService;
         private IUnitOfWork unitOfWork;
+
         public AdvertisingConstructionController(IAdvConstructionService advertisingConstructionService, IUnitOfWork unitOfWork)
         {
             this.advertisingConstructionService = advertisingConstructionService;
@@ -22,6 +19,13 @@ namespace OutdorAdvManage.Web.Controllers
 
         // GET: AdvertisingConstruction
         public ActionResult Index()
+        {
+            var items = advertisingConstructionService.GetAll();
+            return View(items);
+        }
+
+        // GET: AdvertisingConstruction
+        public ActionResult Sheme()
         {
             var items = advertisingConstructionService.GetAll();
             return View(items);
@@ -41,11 +45,12 @@ namespace OutdorAdvManage.Web.Controllers
 
         // POST: AdvertisingConstruction/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(AdvertisingConstruction advertisingConstruction)
         {
             try
             {
-                // TODO: Add insert logic here
+                advertisingConstructionService.Create(advertisingConstruction);
+                advertisingConstructionService.SaveCounterparty();
 
                 return RedirectToAction("Index");
             }
@@ -58,16 +63,25 @@ namespace OutdorAdvManage.Web.Controllers
         // GET: AdvertisingConstruction/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var construction = advertisingConstructionService.GetById(id);
+            return View(construction);
         }
 
         // POST: AdvertisingConstruction/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, AdvertisingConstruction construction)
         {
             try
             {
-                // TODO: Add update logic here
+                var val = advertisingConstructionService.GetById(id);
+                val.Description = construction.Description;
+                val.Latitude = construction.Latitude;
+                val.Longitude = construction.Longitude;
+                val.NumberInSheme = construction.NumberInSheme;
+                val.NumberSides = construction.NumberSides;
+                val.TypeContsruction = construction.TypeContsruction;
+                advertisingConstructionService.Update(val);
+                advertisingConstructionService.SaveCounterparty();
 
                 return RedirectToAction("Index");
             }
@@ -80,18 +94,20 @@ namespace OutdorAdvManage.Web.Controllers
         // GET: AdvertisingConstruction/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var construction = advertisingConstructionService.GetById(id);
+            return View(construction);
         }
 
         // POST: AdvertisingConstruction/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, AdvertisingConstruction construction)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                var val = advertisingConstructionService.GetById(id);
+                advertisingConstructionService.Delete(val);
+                advertisingConstructionService.SaveCounterparty();
+                return View("Index");
             }
             catch
             {

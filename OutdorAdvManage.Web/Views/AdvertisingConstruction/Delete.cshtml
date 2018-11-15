@@ -1,0 +1,72 @@
+﻿@model OutdorAdvManage.Model.Models.AdvertisingConstruction
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AdvertisingConstruction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeContsruction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeContsruction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberSides)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberSides)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberInSheme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberInSheme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

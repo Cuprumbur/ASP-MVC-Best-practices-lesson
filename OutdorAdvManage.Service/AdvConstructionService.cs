@@ -1,15 +1,22 @@
 ﻿using OutdorAdvManage.Data.Infrastructure;
 using OutdorAdvManage.Data.Repositories;
 using OutdorAdvManage.Model.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Store.Service
 {
     public interface IAdvConstructionService
     {
-        void CreateCounterparty(AdvertisingConstruction advertisingConstruction);
         IEnumerable<AdvertisingConstruction> GetAll();
+
+        void Create(AdvertisingConstruction advertisingConstruction);
+
+        void Update(AdvertisingConstruction advertisingConstruction);
+
+        void Delete(AdvertisingConstruction advertisingConstruction);
+
+        AdvertisingConstruction GetById(int id);
+
         void SaveCounterparty();
     }
 
@@ -24,27 +31,38 @@ namespace Store.Service
             this.advertisingConstructionRepository = advertisingConstructionRepository;
             this.unitOfWork = unitOfWork;
         }
+        #region ICategoryService Members
 
-        public void CreateCounterparty(AdvertisingConstruction advertisingConstruction)
+        public void Create(AdvertisingConstruction advertisingConstruction)
         {
             advertisingConstructionRepository.Add(advertisingConstruction);
+        }
+
+        public void Delete(AdvertisingConstruction advertisingConstruction)
+        {
+            advertisingConstructionRepository.Delete(advertisingConstruction);
         }
 
         public IEnumerable<AdvertisingConstruction> GetAll()
         {
             return advertisingConstructionRepository.GetAll(); ;
-
         }
 
-        #region ICategoryService Members
+        public AdvertisingConstruction GetById(int id)
+        {
+            return advertisingConstructionRepository.GetById(id);
+        }
+
 
         public void SaveCounterparty()
         {
-            unitOfWork.Commit(); 
+            unitOfWork.Commit();
         }
 
-
-
+        public void Update(AdvertisingConstruction advertisingConstruction)
+        {
+            advertisingConstructionRepository.Update(advertisingConstruction);
+        }
 
         #endregion ICategoryService Members
     }

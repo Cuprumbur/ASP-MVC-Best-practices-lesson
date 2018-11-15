@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<OutdorAdvManage.Model.Models.Resolution>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Управление наражной рекламой (Альфа)";
 }
 
-<h2>Index</h2>
+<h2>Разрешения</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить", "Create")
 </p>
 <table class="table">
     <tr>
@@ -18,13 +18,13 @@
             @Html.DisplayNameFor(model => model.Time)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.СounterpartyId)
+            @Html.DisplayNameFor(model => model.Сounterparty)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerId)
+            @Html.DisplayNameFor(model => model.Owner)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AdvertisingConstructionId)
+            @Html.DisplayNameFor(model => model.AdvertisingConstruction)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AdvertisingContent)
@@ -36,7 +36,7 @@
             @Html.DisplayNameFor(model => model.Finish)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContractPermitionId)
+            @Html.DisplayNameFor(model => model.ContractPermition)
         </th>
         <th></th>
     </tr>
@@ -47,33 +47,33 @@
             @Html.DisplayFor(modelItem => item.Number)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Time)
+            @item.Time.ToShortDateString()
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.СounterpartyId)
+            @Html.DisplayFor(modelItem => item.Сounterparty.NameCompany)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OwnerId)
+            @Html.DisplayFor(modelItem => item.Owner.Сounterparty.NameCompany )
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AdvertisingConstructionId)
+            @Html.DisplayFor(modelItem => item.AdvertisingConstruction.Description)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AdvertisingContent)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Start)
+            @item.Start.ToShortDateString()
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Finish)
+            @item.Finish.ToShortDateString()
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContractPermitionId)
+           @item.ContractPermition.Number.ToString() @item.ContractPermition.Time.ToShortDateString()
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ResolutionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ResolutionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ResolutionId })
+            @Html.ActionLink("Изменить", "Edit", new { id=item.ResolutionId }) |
+            @Html.ActionLink("Подробно", "Details", new { id=item.ResolutionId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ResolutionId })
         </td>
     </tr>
 }

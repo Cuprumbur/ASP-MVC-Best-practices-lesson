@@ -1,13 +1,11 @@
 ﻿@model IEnumerable<OutdorAdvManage.Model.Models.AdvertisingConstruction>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Рекламные контсрукции";
 }
-
-<h2>Index</h2>
-
+<h2>Конструкции</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить", "Create")
 </p>
 <table class="table">
     <tr>
@@ -21,37 +19,38 @@
             @Html.DisplayNameFor(model => model.NumberInSheme)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Geography.Latitude)
+            @Html.DisplayNameFor(model => model.Latitude)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Geography.Longitude)
+            @Html.DisplayNameFor(model => model.Longitude)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TypeContsruction)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberSides)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberInSheme)
-        </td>
-        <th>
-            @Html.DisplayFor(model => item.Geography.Latitude)
-        </th>
-        <th>
-            @Html.DisplayFor(model => item.Geography.Longitude)
-        </th>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.AdvertisingConstructionId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.AdvertisingConstructionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.AdvertisingConstructionId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeContsruction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberSides)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberInSheme)
+            </td>
+            <th>
+                @Html.DisplayFor(model => item.Latitude)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.Longitude)
+            </th>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.AdvertisingConstructionId }) |
+                @Html.ActionLink("Подробно", "Details", new { id = item.AdvertisingConstructionId }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.AdvertisingConstructionId })
+            </td>
+        </tr>
+    }
 
 </table>

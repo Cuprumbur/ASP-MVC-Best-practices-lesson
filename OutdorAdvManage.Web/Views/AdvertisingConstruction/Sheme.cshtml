@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OutdorAdvManage.Model.Models.AdvertisingConstruction>
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+
+</head>
+<body>
+    <div id="map" style="height:550px"></div>
+    <script type="text/javascript">
+        var map;
+
+        DG.then(function () {
+            map = DG.map('map', {
+                center: [51.825, 107.63],
+                zoom: 12
+            });
+
+            //DG.marker([51.825, 107.63], { title: "Трубачеева" })
+            //    .addTo(map).bindPopup('Информация о конструкции')
+            //    .bindLabel('32', {
+            //        static: true
+            //    });;
+
+            var items = @Html.Raw(Json.Encode(Model));
+            items.forEach(function (item, i, items) {
+                DG.marker([item.Latitude, item.Longitude], { title: '№ в схеме: ' + item.NumberInSheme.toString()+ '\nтип: '+item.TypeContsruction +'\nстороны: '+ item.NumberSides.toString() })
+                    .addTo(map).bindPopup(item.Description)
+                    .bindLabel(item.NumberInSheme.toString(), {
+                        static: true
+                });
+
+        });
+
+        });
+
+
+    </script>
+</body>

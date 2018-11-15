@@ -1,6 +1,4 @@
-﻿using System.Data.Entity.Spatial;
-
-namespace OutdorAdvManage.Model.Models
+﻿namespace OutdorAdvManage.Model.Models
 {
     /// <summary>
     /// Рекламная конструкция
@@ -28,8 +26,15 @@ namespace OutdorAdvManage.Model.Models
         /// </summary>
         public int NumberInSheme { get; set; }
 
-        //
+        /// <summary>
+        /// Широта
+        /// </summary>
+        public double Latitude { get; set; }
 
+        /// <summary>
+        /// Долгота
+        /// </summary>
+        public double Longitude { get; set; }
 
         //public DbGeography Geography { get; set; }
 
